@@ -12,8 +12,10 @@ RUN set -ex \
     libxml2-dev \
     libxslt-dev
 
+ENV HOME_ASSISTANT_VERSION 0.28.2
+
 # colorlog cython
-RUN pip3 install --no-cache-dir homeassistant \
+RUN pip3 install --no-cache-dir "homeassistant==${HOME_ASSISTANT_VERSION}" \
   && rm -rf ~/.cache
 
 CMD [ "hass", "--config", "/config" ]
